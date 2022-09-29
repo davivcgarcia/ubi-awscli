@@ -2,7 +2,7 @@
 # Redistributable base image from Red Hat based on RHEL 8
 #
 
-FROM registry.access.redhat.com/ubi8/ubi
+FROM registry.access.redhat.com/ubi9/ubi
 
 #
 # Metadata information
@@ -13,13 +13,13 @@ LABEL name="AWS CLI UBI Image" \
       maintainer="Davi Garcia <davivcgarcia@gmail.com>" \
       build-date="2022-09-28" \
       version="${AWSCLI_VERSION}" \
-      release="1"
+      release="2"
 
 #
 # Environment variables used for build/exec
 #
 
-ENV AWSCLI_VERSION=1.24.10 \
+ENV AWSCLI_VERSION=1.25.83 \
     AWSCLI_USER=awscli \
     AWSCLI_WORKDIR=/home/awscli \
     YUM_OPTS="--setopt=install_weak_deps=False --setopt=tsflags=nodocs" \
@@ -35,7 +35,7 @@ COPY helpers/* /usr/bin/
 # Install requirements and application
 #
 
-RUN yum install ${YUM_OPTS} -y python36 nss_wrapper && \
+RUN yum install ${YUM_OPTS} -y python3-pip nss_wrapper && \
     yum -y clean all && \
     pip3 install ${PIP_OPTS} awscli==${AWSCLI_VERSION}
 
