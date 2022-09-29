@@ -11,7 +11,7 @@ FROM registry.access.redhat.com/ubi8/ubi
 LABEL name="AWS CLI UBI Image" \
       vendor="AWS" \
       maintainer="Davi Garcia <davivcgarcia@gmail.com>" \
-      build-date="2020-03-31" \
+      build-date="2022-09-28" \
       version="${AWSCLI_VERSION}" \
       release="1"
 
@@ -19,7 +19,7 @@ LABEL name="AWS CLI UBI Image" \
 # Environment variables used for build/exec
 #
 
-ENV AWSCLI_VERSION=1.18.32 \
+ENV AWSCLI_VERSION=1.24.10 \
     AWSCLI_USER=awscli \
     AWSCLI_WORKDIR=/home/awscli \
     YUM_OPTS="--setopt=install_weak_deps=False --setopt=tsflags=nodocs" \
